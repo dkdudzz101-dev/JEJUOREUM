@@ -7,6 +7,8 @@ import '../screens/announcements_screen.dart';
 import '../screens/faq_screen.dart';
 import '../screens/terms_of_use_screen.dart';
 import '../screens/settings_screen.dart';
+import '../screens/statistics_screen.dart';
+import '../screens/analytics_screen.dart';
 import '../services/profile_provider.dart';
 
 class CommonMenuDrawer {
@@ -60,6 +62,22 @@ class CommonMenuDrawer {
                   const SizedBox(height: 20),
 
                   // 메뉴 항목들
+                  _buildMenuItem(context, '통계 & 업적', () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const StatisticsScreen()),
+                    );
+                  }),
+                  _buildMenuItem(context, '데이터 분석', () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AnalyticsScreen()),
+                    );
+                  }),
+                  const Divider(height: 1, color: AppTheme.dividerGray),
+                  const SizedBox(height: 12),
                   _buildMenuItem(context, '문의하기', () {
                     Navigator.pop(context);
                     Navigator.push(
