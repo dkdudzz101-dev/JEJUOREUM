@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:csv/csv.dart';
 import '../models/hiking_record.dart';
@@ -32,7 +33,8 @@ class AnalyticsService {
         }
       }
     } catch (e) {
-      print('카테고리 데이터 로드 오류: $e');
+      // TODO: Replace with proper logging framework in production
+      debugPrint('카테고리 데이터 로드 오류: $e');
       _categoryMap = {};
     }
   }
@@ -147,8 +149,8 @@ class AnalyticsService {
 
     // 추세 계산 (최근 3개월 vs 이전 3개월)
     final now = DateTime.now();
-    final threeMonthsAgo = DateTime(now.year, now.month - 3, now.day);
-    final sixMonthsAgo = DateTime(now.year, now.month - 6, now.day);
+    final threeMonthsAgo = DateTime(now.year, now.month, now.day).subtract(const Duration(days: 90));
+    final sixMonthsAgo = DateTime(now.year, now.month, now.day).subtract(const Duration(days: 180));
 
     final recentRecords = completedRecords
         .where((r) => r.startTime.isAfter(threeMonthsAgo))

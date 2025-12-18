@@ -36,7 +36,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
         _isLoading = false;
       });
     } catch (e) {
-      print('분석 로드 오류: $e');
+      // TODO: Replace with proper logging framework in production
+      debugPrint('분석 로드 오류: $e');
       setState(() {
         _isLoading = false;
       });
